@@ -1,0 +1,65 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Upload QR Code</title>
+</head>
+<body>
+    <h2>Upload QR Code Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="qr_code_image" accept="image/*">
+        <button type="submit">Scan QR Code</button>
+    </form>
+</body>
+</html> {% endcomment %}
+
+<!-- templates/upload.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scan QR Code</title>
+</head>
+<body>
+    <h2>Scan QR Code</h2>
+    <div id="reader" width="600px"></div>
+    <script src="https://unpkg.com/html5-qrcode/minified/html5-qrcode.min.js"></script>
+
+    <script>
+        function onScanSuccess(decodedText, decodedResult) {
+            // Handle on success condition with the decoded text or result.
+            console.log(`Scan result: ${decodedText}`, decodedResult);
+
+            // Send the decoded text to the backend for processing
+            fetch('/process_qr/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ data: decodedText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display the key-value pairs
+                let resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = '';
+                for (const [key, value] of Object.entries(data)) {
+                    resultDiv.innerHTML += `<p>${key}: ${value}</p>`;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function onScanError(errorMessage) {
+            // handle on error condition, with error message
+            console.error(errorMessage);
+        }
+
+        // Initialize the QR code scanner
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+            "reader", { fps: 10, qrbox: 250 });
+        html5QrcodeScanner.render(onScanSuccess, onScanError);
+    </script>
+    <div id="result"></div>
+</body>
+</html>

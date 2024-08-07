@@ -1,0 +1,133 @@
+<!-- user_profile.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .profile-details, .registration-details {
+            margin-bottom: 20px;
+        }
+        .profile-details img {
+            max-width: 150px;
+            height: auto;
+            display: block;
+        }
+        .profile-details p, .registration-details p {
+            margin: 5px 0;
+        }
+        .profile-details h2, .registration-details h2 {
+            color: #555;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+        .form-section h3 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        .form-section p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="form-section">
+        <h3>1. UNIT DETAILS</h3>
+        <p><strong>Unit ID:</strong> {{ user_registration.unit_id }}</p>
+        <p><strong>Unit Name:</strong> {{ user_registration.unit_name }}</p>
+        <p><strong>Unit Address:</strong> {{ user_registration.unit_address }}</p>
+        <p><strong>Dak ID:</strong> {{ user_registration.dak_id }}</p>
+    </div>
+
+    <div class="form-section">
+        <h3>2. BUDGET DETAILS</h3>
+        <p><strong>Code Head:</strong> {{ user_registration.codehead }}</p>
+        <p><strong>IFA/CFA:</strong> {{ user_registration.ifa_cfa }}</p>
+        <p><strong>Amount Allotment:</strong> {{ user_registration.amount_allotment }}</p>
+        <p><strong>Amount Expended:</strong> {{ user_registration.amount_expended }}</p>
+        <p><strong>Balance Allotment:</strong> {{ user_registration.balance_allotment }}</p>
+    </div>
+
+    <div class="form-section">
+        <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>
+        <p><strong>Expenditure Account:</strong> {{ user_registration.expenditure_account }}</p>
+        <p><strong>Incurred By:</strong> {{ user_registration.incurred_by }}</p>
+        <p><strong>During Month:</strong> {{ user_registration.during_month }}</p>
+        <p><strong>Authority:</strong> {{ user_registration.authority }}</p>
+        <p><strong>Sanction No:</strong> {{ user_registration.sanction_no }}</p>
+        <p><strong>Sanction Date:</strong> {{ user_registration.sanction_date }}</p>
+        <p><strong>Sanction Amount:</strong> {{ user_registration.sanction_amount }}</p>
+        <p><strong>Supply Order No:</strong> {{ user_registration.supply_order_no }}</p>
+        <p><strong>Supply Order Date:</strong> {{ user_registration.supply_order_date }}</p>
+        <p><strong>Supply Order Amount:</strong> {{ user_registration.supply_order_amount }}</p>
+    </div>
+
+    <div class="form-section">
+        <h3>4. EXPENDITURE DETAILS</h3>
+        <!-- Display expenditure details if they are saved in a format accessible through user_registration -->
+        <!-- For dynamic rows, you might need to iterate through a list if stored separately -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Sl. No.</th>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Qty Type</th>
+                    <th>Tax Type</th>
+                    <th>Base Amount</th>
+                    <th>Tax Amount</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for expenditure in user_registration.expenditures.all %}
+                    <tr>
+                        <td>{{ expenditure.sl_no }}</td>
+                        <td>{{ expenditure.item_description }}</td>
+                        <td>{{ expenditure.qty }}</td>
+                        <td>{{ expenditure.qty_type }}</td>
+                        <td>{{ expenditure.tax_type }}</td>
+                        <td>{{ expenditure.base_amount }}</td>
+                        <td>{{ expenditure.tax_amount }}</td>
+                        <td>{{ expenditure.amount }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8">No expenditure details available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-section">
+        <h3>5. PAYMENT TO (BENEFICIARY)</h3>
+        <p><strong>Vendor Name:</strong> {{ user_registration.vendor_name }}</p>
+        <p><strong>MSME/Non-MSME:</strong> {{ user_registration.msme_nonmsme }}</p>
+        <p><strong>Vendor Bank Account:</strong> {{ user_registration.vendor_bank_account }}</p>
+        <p><strong>IFSC:</strong> {{ user_registration.ifsc }}</p>
+        <p><strong>GSTIN:</strong> {{ user_registration.gstin }}</p>
+        <p><strong>PAN:</strong> {{ user_registration.pan }}</p>
+    </div>
+
+    <div class="form-section">
+        <h3>6. PAYING AUTHORITY</h3>
+        <p><strong>Paying Authority:</strong> {{ user_registration.paying_authority }}</p>
+    </div>
+
+    <div class="form-section">
+        <h3>Signature and Certification</h3>
+        <p><strong>Signature:</strong> {{ user_registration.signature }}</p>
+        <p><strong>Countersigned:</strong> {{ user_registration.countersigned }}</p>
+        <p><strong>Received Payment:</strong> {{ user_registration.received_payment }}</p>
+    </div>
+</body>
+</html>
