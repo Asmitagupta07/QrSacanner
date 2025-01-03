@@ -19,32 +19,34 @@
             display: block;
             margin-bottom: 5px;
         }
+        .form-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .form-table td {
+            padding: 8px;
+            vertical-align: top;
+        }
+        .form-table input, .form-table select, .form-table textarea {
+            width: 95%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
         .form-section input, .form-section select, .form-section textarea {
             width: 100%;
             padding: 8px;
             margin-bottom: 10px;
             box-sizing: border-box;
         }
-        .form-section table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        .form-section table, .form-section th, .form-section td {
-            border: 1px solid #ccc;
-        }
-        .form-section th, .form-section td {
-            padding: 8px;
-            text-align: left;
-        }
         h1 {
             padding: 8px;
             text-align: center;
             color: green;
         }
-        h3{
-            color: blue ;
+        h3 {
+            color: blue;
         }
-
         .container {
             max-width: 1000px;
             margin: auto;
@@ -62,17 +64,41 @@
             cursor: pointer;
             text-align: center;
         }
+        .form-section table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .form-section .table1 {
+            border: none; 
+        }
         
-        .border-button {
-            background-color: white;
-            color: green;
+        .form-section .table1 th, 
+        .form-section .table1 td {
+            border: none;
+        }
+        .blue-button {
+            background-color: blue;
+            color: white;
             display: block;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .border-button {orm-section
             border: 2px solid green;
             border-radius: 5px;
             cursor: pointer;
 
         }
-        
+        .contingent-table #qrCodeImg {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            margin-left: auto;
+        }
     </style>
 </head>
 <body>
@@ -80,41 +106,90 @@
     <form method="post">
         <h1>Contingent Bill (N)</h1>
         {% csrf_token %}
-       
+
+        <!-- Unit Details Section -->
         <div class="form-section">
             <h3>1. UNIT DETAILS</h3>
-            {{ form.unit_id.label_tag }}{{ form.unit_id }}
-            {{ form.unit_name.label_tag }}{{ form.unit_name }}
-            {{ form.unit_address.label_tag }}{{ form.unit_address }}
-            {{ form.dak_id.label_tag }}{{ form.dak_id }}
+            <table class="form-table">
+                <tr>
+                    <td>{{ form.unit_id.label_tag }}</td>
+                    <td>{{ form.unit_id }}</td>
+                    <td>{{ form.unit_name.label_tag }}</td>
+                    <td>{{ form.unit_name }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.unit_address.label_tag }}</td>
+                    <td>{{ form.unit_address }}</td>
+                    <td>{{ form.dak_id.label_tag }}</td>
+                    <td>{{ form.dak_id }}</td>
+                </tr>
+            </table>
         </div>
 
+        <!-- Budget Details Section -->
         <div class="form-section">
             <h3>2. BUDGET DETAILS</h3>
-            {{ form.codehead.label_tag }}{{ form.codehead }}
-            {{ form.ifa_cfa.label_tag }}{{ form.ifa_cfa }}
-            {{ form.amount_allotment.label_tag }}{{ form.amount_allotment }}
-            {{ form.amount_expended.label_tag }}{{ form.amount_expended }}
-            {{ form.balance_allotment.label_tag }}{{ form.balance_allotment }}
+            <table class="form-table">
+                <tr>
+                    <td>{{ form.codehead.label_tag }}</td>
+                    <td>{{ form.codehead }}</td>
+                    <td>{{ form.ifa_cfa.label_tag }}</td>
+                    <td>{{ form.ifa_cfa }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.amount_allotment.label_tag }}</td>
+                    <td>{{ form.amount_allotment }}</td>
+                    <td>{{ form.amount_expended.label_tag }}</td>
+                    <td>{{ form.amount_expended }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.balance_allotment.label_tag }}</td>
+                    <td>{{ form.balance_allotment }}</td>
+                </tr>
+            </table>
         </div>
 
+        <!-- Sanction/Supply Order Details Section -->
         <div class="form-section">
             <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>
-            {{ form.expenditure_account.label_tag }}{{ form.expenditure_account }}
-            {{ form.incurred_by.label_tag }}{{ form.incurred_by }}
-            {{ form.during_month.label_tag }}{{ form.during_month }}
-            {{ form.authority.label_tag }}{{ form.authority }}
-            {{ form.sanction_no.label_tag }}{{ form.sanction_no }}
-            {{ form.sanction_date.label_tag }}{{ form.sanction_date }}
-            {{ form.sanction_amount.label_tag }}{{ form.sanction_amount }}
-            {{ form.supply_order_no.label_tag }}{{ form.supply_order_no }}
-            {{ form.supply_order_date.label_tag }}{{ form.supply_order_date }}
-            {{ form.supply_order_amount.label_tag }}{{ form.supply_order_amount }}
+            <table class="form-table">
+                <tr>
+                    <td>{{ form.expenditure_account.label_tag }}</td>
+                    <td>{{ form.expenditure_account }}</td>
+                    <td>{{ form.incurred_by.label_tag }}</td>
+                    <td>{{ form.incurred_by }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.during_month.label_tag }}</td>
+                    <td>{{ form.during_month }}</td>
+                    <td>{{ form.authority.label_tag }}</td>
+                    <td>{{ form.authority }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.sanction_no.label_tag }}</td>
+                    <td>{{ form.sanction_no }}</td>
+                    <td>{{ form.sanction_date.label_tag }}</td>
+                    <td>{{ form.sanction_date }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.supply_order_no.label_tag }}</td>
+                    <td>{{ form.supply_order_no }}</td>
+                    <td>{{ form.supply_order_date.label_tag }}</td>
+                    <td>{{ form.supply_order_date }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.sanction_amount.label_tag }}</td>
+                    <td>{{ form.sanction_amount }}</td>
+                    <td>{{ form.supply_order_amount.label_tag }}</td>
+                    <td>{{ form.supply_order_amount }}</td>
+                </tr>
+            </table>
         </div>
 
+        <!-- Expenditure Details Section -->
         <div class="form-section">
             <h3>4. EXPENDITURE DETAILS</h3>
-            <table>
+            <table class="form-table">
                 <thead>
                     <tr>
                         <th>Sl. No.</th>
@@ -131,72 +206,109 @@
                     <!-- Populate initial rows here if needed -->
                 </tbody>
             </table>
-            <button type="button" class="border-button" onclick="addExpenditureRow()">Add Row</button>
+            <button type="button" class="blue-button" onclick="addExpenditureRow()">Add Row</button>
+            <table class="form-table">
+                <tr>
+                    <td>{{ form.bill_no.label_tag }}</td>
+                    <td>{{ form.bill_no }}</td>
+                    <td>{{ form.bill_date.label_tag }}</td>
+                    <td>{{ form.bill_date }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.invoice_no.label_tag }}</td>
+                    <td>{{ form.invoice_no }}</td>
+                    <td>{{ form.invoice_date.label_tag }}</td>
+                    <td>{{ form.invoice_date }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.disallowed_amount.label_tag }}</td>
+                    <td>{{ form.disallowed_amount }}</td>
+                    <td>{{ form.total_bill_amount.label_tag }}</td>
+                    <td>{{ form.total_bill_amount}}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.crv_esic_epfo_no.label_tag  }}</td>
+                    <td>{{ form.crv_esic_epfo_no }}</td>
+                    <td>{{ form.crv_esic_epfo_date.label_tag }}</td>
+                    <td>{{ form.crv_esic_epfo_date }}</td>
+                </tr>
+            </table>
         </div>
 
-        <div class="form-section">
-            {{ form.bill_no.label_tag }}{{ form.bill_no }}
-            {{ form.bill_date.label_tag }}{{ form.bill_date }}
-            {{ form.invoice_no.label_tag }}{{ form.invoice_no }}
-            {{ form.invoice_date.label_tag }}{{ form.invoice_date }}
-            {{ form.disallowed_amount.label_tag }}{{ form.disallowed_amount }}
-            {{ form.total_bill_amount.label_tag }}{{ form.total_bill_amount }}
-            {{ form.crv_esic_epfo_no.label_tag }}{{ form.crv_esic_epfo_no }}
-            {{ form.crv_esic_epfo_date.label_tag }}{{ form.crv_esic_epfo_date }}
-        </div>
-
+        <!-- Payment to Beneficiary Section -->
         <div class="form-section">
             <h3>5. PAYMENT TO (BENEFICIARY)</h3>
-            {{ form.vendor_name.label_tag }}{{ form.vendor_name }}
-            {{ form.msme_nonmsme.label_tag }}{{ form.msme_nonmsme }}
-            {{ form.vendor_bank_account.label_tag }}{{ form.vendor_bank_account }}
-            {{ form.ifsc.label_tag }}{{ form.ifsc }}
-            {{ form.gstin.label_tag }}{{ form.gstin }}
-            {{ form.pan.label_tag }}{{ form.pan }}
+            <table class="form-table">
+                <tr>
+                    <td>{{ form.vendor_name.label_tag }}</td>
+                    <td>{{ form.vendor_name }}</td>
+                    <td>{{ form.msme_nonmsme.label_tag }}</td>
+                    <td>{{ form.msme_nonmsme }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.vendor_bank_account.label_tag }}</td>
+                    <td>{{ form.vendor_bank_account }}</td>
+                    <td>{{ form.ifsc.label_tag }}</td>
+                    <td>{{ form.ifsc }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.gstin.label_tag }}</td>
+                    <td>{{ form.gstin }}</td>
+                    <td>{{ form.pan.label_tag }}</td>
+                    <td>{{ form.pan }}</td>
+                </tr>
+            </table>
         </div>
 
+        <!-- PAYING AUTHORITY -->
         <div class="form-section">
             <h3>6. PAYING AUTHORITY</h3>
-            {{ form.paying_authority.label_tag }}{{ form.paying_authority }}
+            <td>{{ form.paying_authority.label_tag}}</td>
+            <td>{{ form.paying_authority }}</td>
         </div>
 
         <div class="form-section">
             <p>
                 Certified that the above charges have been necessarily incurred in the interest of the State that the rates charged are the lowest obtainable and that all receipts for sums of Rs……… and under except as regards payments made in the MES to Contractors on running accounts have been so destroyed defaced or mutilated that they cannot be used again and that I have personally checked the progressive total in the bill with that in the contingent registers and found it to agree.
             </p>
-            {{ form.signature.label_tag }}{{ form.signature }}
-            {{ form.countersigned.label_tag }}{{ form.countersigned }}
-            {{ form.received_payment.label_tag }}{{ form.received_payment }}
+
+            <table class="table1">
+                <tr>
+                  <th>Signature</th>
+                  <th>Countersigned</th>
+                  <th>Received Payment</th>    
+                </tr>
+                <tr>
+                  <td>__________________________</td>
+                  <td>__________________________</td>    
+                  <td>__________________________</td>  
+                </tr>
+              </table>
         </div>
+
 
         <button type="submit" class="green-button">Submit</button>
     </form>
-    {% if user_profile %}
-    <h2>Your QR Code</h2>
-    <img src="{{  user_profile.qr_code.url }}" alt="QR Code">
-    {% endif %}
-
   </div>
-    <script>
-        function addExpenditureRow() {
-            const table = document.getElementById('expenditure-rows');
-            const row = document.createElement('tr');
-            
-            row.innerHTML = `
-                <td><input type="number" name="sl-no"></td>
-                <td><input type="text" name="item-description"></td>
-                <td><input type="number" name="qty"></td>
-                <td><input type="text" name="qty-type"></td>
-                <td><input type="text" name="tax-type"></td>
-                <td><input type="number" name="base-amount"></td>
-                <td><input type="number" name="tax-amount"></td>
-                <td><input type="number" name="amount"></td>
-            `;
-            
-            table.appendChild(row);
-        }
-    </script>
-    
 
+  <script>
+      function addExpenditureRow() {
+          const table = document.getElementById('expenditure-rows');
+          const row = document.createElement('tr');
+
+          row.innerHTML = `
+            <td><input type="number" name="sl_no"></td>
+            <td><input type="text" name="item_description"></td>
+            <td><input type="number" name="qty"></td>
+            <td><input type="text" name="qty_type"></td>
+            <td><input type="text" name="tax_type"></td>
+            <td><input type="number" name="base_amount"></td>
+            <td><input type="number" name="tax_amount"></td>
+            <td><input type="number" name="amount"></td>
+        `;
+
+          table.appendChild(row);
+      }
+  </script>
 </body>
 </html>

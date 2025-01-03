@@ -1,79 +1,382 @@
 <!-- user_profile.html -->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>User Profile</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 20px;-->
+<!--        }-->
+<!--        h1 {-->
+<!--            padding: 8px;-->
+<!--            text-align: center;-->
+<!--            color: green;-->
+<!--        }-->
+<!--        .profile-details, .registration-details {-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        .profile-details img {-->
+<!--            max-width: 150px;-->
+<!--            height: auto;-->
+<!--            display: block;-->
+<!--        }-->
+<!--        .profile-details p, .registration-details p {-->
+<!--            margin: 5px 0;-->
+<!--        }-->
+<!--        .profile-details h2, .registration-details h2 {-->
+<!--            color: #555;-->
+<!--        }-->
+<!--        .form-section {-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        .form-section h3 {-->
+<!--            margin-bottom: 10px;-->
+<!--            border-bottom: 1px solid #ccc;-->
+<!--        }-->
+<!--        .form-section p {-->
+<!--            margin: 5px 0;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 1000px;-->
+<!--            margin: auto;-->
+<!--            background: #f0f0f0;-->
+<!--            padding: 10px 50px;-->
+<!--        }-->
+<!--        h3 {-->
+<!--            color: blue;-->
+<!--            font-weight: bolder;-->
+<!--            font-family: revert;-->
+<!--        }-->
+<!--        .form-section h3 {-->
+<!--            margin-bottom: 10px;-->
+<!--            border-bottom: 4px solid #9099;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="container">-->
+<!--    <h1>Contingent Bill (N)</h1>-->
+<!--    <div class="form-section">-->
+<!--        <h3>1. UNIT DETAILS</h3>-->
+<!--        <p><strong>Unit ID:</strong> {{ user_registration.unit_id }}</p>-->
+<!--        <p><strong>Unit Name:</strong> {{ user_registration.unit_name }}</p>-->
+<!--        <p><strong>Unit Address:</strong> {{ user_registration.unit_address }}</p>-->
+<!--        <p><strong>Dak ID:</strong> {{ user_registration.dak_id }}</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>2. BUDGET DETAILS</h3>-->
+<!--        <p><strong>Code Head:</strong> {{ user_registration.codehead }}</p>-->
+<!--        <p><strong>IFA/CFA:</strong> {{ user_registration.ifa_cfa }}</p>-->
+<!--        <p><strong>Amount Allotment:</strong> {{ user_registration.amount_allotment }}</p>-->
+<!--        <p><strong>Amount Expended:</strong> {{ user_registration.amount_expended }}</p>-->
+<!--        <p><strong>Balance Allotment:</strong> {{ user_registration.balance_allotment }}</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>-->
+<!--        <p><strong>Expenditure Account:</strong> {{ user_registration.expenditure_account }}</p>-->
+<!--        <p><strong>Incurred By:</strong> {{ user_registration.incurred_by }}</p>-->
+<!--        <p><strong>During Month:</strong> {{ user_registration.during_month }}</p>-->
+<!--        <p><strong>Authority:</strong> {{ user_registration.authority }}</p>-->
+<!--        <p><strong>Sanction No:</strong> {{ user_registration.sanction_no }}</p>-->
+<!--        <p><strong>Sanction Date:</strong> {{ user_registration.sanction_date }}</p>-->
+<!--        <p><strong>Sanction Amount:</strong> {{ user_registration.sanction_amount }}</p>-->
+<!--        <p><strong>Supply Order No:</strong> {{ user_registration.supply_order_no }}</p>-->
+<!--        <p><strong>Supply Order Date:</strong> {{ user_registration.supply_order_date }}</p>-->
+<!--        <p><strong>Supply Order Amount:</strong> {{ user_registration.supply_order_amount }}</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>4. EXPENDITURE DETAILS</h3>-->
+        <!-- Display expenditure details if they are saved in a format accessible through user_registration -->
+        <!-- For dynamic rows, you might need to iterate through a list if stored separately -->
+<!--        <table>-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>Sl. No.</th>-->
+<!--                    <th>Item Description</th>-->
+<!--                    <th>Qty</th>-->
+<!--                    <th>Qty Type</th>-->
+<!--                    <th>Tax Type</th>-->
+<!--                    <th>Base Amount</th>-->
+<!--                    <th>Tax Amount</th>-->
+<!--                    <th>Amount</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--                {% for expenditure in user_registration.expenditures.all %}-->
+<!--                    <tr>-->
+<!--                        <td>{{ expenditure.sl_no }}</td>-->
+<!--                        <td>{{ expenditure.item_description }}</td>-->
+<!--                        <td>{{ expenditure.qty }}</td>-->
+<!--                        <td>{{ expenditure.qty_type }}</td>-->
+<!--                        <td>{{ expenditure.tax_type }}</td>-->
+<!--                        <td>{{ expenditure.base_amount }}</td>-->
+<!--                        <td>{{ expenditure.tax_amount }}</td>-->
+<!--                        <td>{{ expenditure.amount }}</td>-->
+<!--                    </tr>-->
+<!--                {% empty %}-->
+<!--                    <tr>-->
+<!--                        <td colspan="8">No expenditure details available.</td>-->
+<!--                    </tr>-->
+<!--                {% endfor %}-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>5. PAYMENT TO (BENEFICIARY)</h3>-->
+<!--        <p><strong>Vendor Name:</strong> {{ user_registration.vendor_name }}</p>-->
+<!--        <p><strong>MSME/Non-MSME:</strong> {{ user_registration.msme_nonmsme }}</p>-->
+<!--        <p><strong>Vendor Bank Account:</strong> {{ user_registration.vendor_bank_account }}</p>-->
+<!--        <p><strong>IFSC:</strong> {{ user_registration.ifsc }}</p>-->
+<!--        <p><strong>GSTIN:</strong> {{ user_registration.gstin }}</p>-->
+<!--        <p><strong>PAN:</strong> {{ user_registration.pan }}</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>6. PAYING AUTHORITY</h3>-->
+<!--        <p><strong>Paying Authority:</strong> {{ user_registration.paying_authority }}</p>-->
+<!--    </div>-->
+
+<!--    <div class="form-section">-->
+<!--        <h3>Signature and Certification</h3>-->
+<!--        <p><strong>Signature:</strong> {{ user_registration.signature }}</p>-->
+<!--        <p><strong>Countersigned:</strong> {{ user_registration.countersigned }}</p>-->
+<!--        <p><strong>Received Payment:</strong> {{ user_registration.received_payment }}</p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Profile</title>
+    <title>Contingent Bill</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #000;
+            background-color: #fff;
+        }
         h1 {
-            color: #333;
+            text-align: center;
+            text-decoration: underline;
+            font-size: 24px;
+            color: #427e42;
         }
-        .profile-details, .registration-details {
+        table {
+            width: 100%;
+            border-collapse: collapse;
             margin-bottom: 20px;
         }
-        .profile-details img {
-            max-width: 150px;
-            height: auto;
-            display: block;
+        th, td {
+            border: 1px solid #000;
+            padding: 8px;
+            text-align: left;
         }
-        .profile-details p, .registration-details p {
-            margin: 5px 0;
+        th {
+            background-color: #f2f2f2;
         }
-        .profile-details h2, .registration-details h2 {
-            color: #555;
-        }
-        .form-section {
-            margin-bottom: 20px;
-        }
-        .form-section h3 {
+        .section-header {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
             margin-bottom: 10px;
-            border-bottom: 1px solid #ccc;
+            text-decoration: underline;
+            color: #5d5dce;
         }
-        .form-section p {
-            margin: 5px 0;
+        .form-section .table1 {
+            border: none;
         }
+
+        .form-section .table1 th,
+        .form-section .table1 td {
+            border: none;
+        }
+        .Qr_code {
+            text-align: right;
+        }
+        .Qr_code img {
+            width: 80px;
+            height: 80px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .green-button {
+            background-color: green;
+            color: white;
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+        }
+         .contingent-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .contingent-table tr,
+        .contingent-table td {
+            border: none; /* Ensure no borders on both rows and cells */
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+
+        .contingent-table td {
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        .contingent-table h1 {
+            margin: 0;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .contingent-table .Qr_code {
+            text-align: right;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+       .contingent-table #qrCodeImg {
+            width: 200px;
+            height: 193px;
+            object-fit: contain;
+            margin-left: auto;
+        }
+
+        .contingent-table .title-cell {
+            width: 87%;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .contingent-table .qr-cell {
+            width: 13%;
+            text-align: right;
+        }
+
     </style>
 </head>
 <body>
-    
-    <div class="form-section">
-        <h3>1. UNIT DETAILS</h3>
-        <p><strong>Unit ID:</strong> {{ user_registration.unit_id }}</p>
-        <p><strong>Unit Name:</strong> {{ user_registration.unit_name }}</p>
-        <p><strong>Unit Address:</strong> {{ user_registration.unit_address }}</p>
-        <p><strong>Dak ID:</strong> {{ user_registration.dak_id }}</p>
+<div class="container">
+    <table class="contingent-table">
+        <tr>
+            <td class="title-cell">
+                <h1>Contingent Bill (N)</h1>
+            </td>
+            <td class="qr-cell">
+                <div class="Qr_code">
+                    {% if user_profile %}
+                    <img id="qrCodeImg" src="{{ user_profile.qr_code.url }}" alt="QR Code">
+                    {% endif %}
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        <p class="section-header">1. UNIT DETAILS</p>
+        <table class="contingent-table2">
+            <tr>
+                <th>a. Unique Unit ID (14 digits)</th>
+                <td>{{ user_registration.unit_id }}</td>
+                <th>b. Unit Name</th>
+                <td>{{ user_registration.unit_name }}</td>
+            </tr>
+            <tr>
+                <th>c. Unit Address</th>
+                <td>{{ user_registration.unit_address }}</td>
+                <th>d. Dak ID (if Resubmitted Bill)</th>
+                <td >{{ user_registration.dak_id }}</td>
+            </tr>
+            {% comment %} <tr>
+                <th>d. Dak ID (if Resubmitted Bill)</th>
+                <td colspan="3">{{ user_registration.dak_id }}</td>
+            </tr> {% endcomment %}
+        </table>
     </div>
 
-    <div class="form-section">
-        <h3>2. BUDGET DETAILS</h3>
-        <p><strong>Code Head:</strong> {{ user_registration.codehead }}</p>
-        <p><strong>IFA/CFA:</strong> {{ user_registration.ifa_cfa }}</p>
-        <p><strong>Amount Allotment:</strong> {{ user_registration.amount_allotment }}</p>
-        <p><strong>Amount Expended:</strong> {{ user_registration.amount_expended }}</p>
-        <p><strong>Balance Allotment:</strong> {{ user_registration.balance_allotment }}</p>
+    <div>
+        <p class="section-header">2. BUDGET DETAILS</p>
+        <table>
+            <tr>
+                <th>a. Code Head</th>
+                <td>{{ user_registration.codehead }}</td>
+                <th>b. IFA Con / CFA Inherited</th>
+                <td>{{ user_registration.ifa_cfa }}</td>
+            </tr>
+            <tr>
+                <th>c. Amount of Allotment</th>
+                <td>{{ user_registration.amount_allotment }}</td>
+                <th>d. Amount Expended</th>
+                <td>{{ user_registration.amount_expended }}</td>
+            </tr>
+            <tr>
+                <th>e. Balance of Allotment</th>
+                <td colspan="3">{{ user_registration.balance_allotment }}</td>
+            </tr>
+        </table>
     </div>
 
-    <div class="form-section">
-        <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>
-        <p><strong>Expenditure Account:</strong> {{ user_registration.expenditure_account }}</p>
-        <p><strong>Incurred By:</strong> {{ user_registration.incurred_by }}</p>
-        <p><strong>During Month:</strong> {{ user_registration.during_month }}</p>
-        <p><strong>Authority:</strong> {{ user_registration.authority }}</p>
-        <p><strong>Sanction No:</strong> {{ user_registration.sanction_no }}</p>
-        <p><strong>Sanction Date:</strong> {{ user_registration.sanction_date }}</p>
-        <p><strong>Sanction Amount:</strong> {{ user_registration.sanction_amount }}</p>
-        <p><strong>Supply Order No:</strong> {{ user_registration.supply_order_no }}</p>
-        <p><strong>Supply Order Date:</strong> {{ user_registration.supply_order_date }}</p>
-        <p><strong>Supply Order Amount:</strong> {{ user_registration.supply_order_amount }}</p>
+    <div>
+        <p class="section-header">3. SANCTION / SUPPLY ORDER DETAILS</p>
+        <table>
+            <tr>
+                <th>a. Expenditure on Account of</th>
+                <td colspan="3">{{ user_registration.expenditure_account }}</td>
+            </tr>
+            <tr>
+                <th>b. Incurred By</th>
+                <td>{{ user_registration.incurred_by }}</td>
+                <th>c. During Month</th>
+                <td>{{ user_registration.during_month }}</td>
+            </tr>
+            <tr>
+                <th>d. Authority</th>
+                <td>{{ user_registration.authority }}</td>
+                <th>e. Sanction No</th>
+                <td>{{ user_registration.sanction_no }}</td>
+            </tr>
+            <tr>
+                <th>f. Sanction Date</th>
+                <td>{{ user_registration.sanction_date }}</td>
+                <th>g. Sanction Amount</th>
+                <td>{{ user_registration.sanction_amount }}</td>
+            </tr>
+            <tr>
+                <th>h. Supply Order No</th>
+                <td>{{ user_registration.supply_order_no }}</td>
+                <th>i. Supply Order Date</th>
+                <td>{{ user_registration.supply_order_date }}</td>
+            </tr>
+            <tr>
+                <th>j. Supply Order Amount</th>
+                <td colspan="3">{{ user_registration.supply_order_amount }}</td>
+            </tr>
+        </table>
     </div>
 
-    <div class="form-section">
-        <h3>4. EXPENDITURE DETAILS</h3>
-        <!-- Display expenditure details if they are saved in a format accessible through user_registration -->
-        <!-- For dynamic rows, you might need to iterate through a list if stored separately -->
+    <div>
+        <p class="section-header">4. EXPENDITURE DETAILS</p>
         <table>
             <thead>
                 <tr>
@@ -106,28 +409,118 @@
                 {% endfor %}
             </tbody>
         </table>
+        <table>
+            <tr>
+                <th>a. Bill No:</th>
+                <td>{{ user_registration.expenditure_account }}</td>
+                <th>b. Bill Date:</th>
+                <td>{{ user_registration.incurred_by }}</td>
+            </tr>
+            <tr>
+                <th>c. Invoice_No:</th>
+                <td>{{ user_registration.during_month }}</td>
+                <th>d. Invoic_Date:</th>
+                <td>{{ user_registration.authority }}</td>
+            </tr>
+            <tr>
+                <th>f. Disallowed Amount:</th>
+                <td>{{ user_registration.sanction_date }}</td>
+                <th>g. Total Bill Amount:</th>
+                <td>{{ user_registration.sanction_amount }}</td>
+            </tr>
+            <tr>
+                <th>h. CRV/ESIC/EPFO Challan Date:</th>
+                <td>{{ user_registration.supply_order_no }}</td>
+                <th>i. CRV/ESIC/CRAC Date:</th>
+                <td>{{ user_registration.supply_order_date }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <p class="section-header">5. PAYMENT TO (BENEFICIARY)</p>
+        <table>
+            <tr>
+                <th>a. Unit / Vendor Name</th>
+                <td>{{ user_registration.vendor_name }}</td>
+                <th>b. MSME / Non-MSME</th>
+                <td>{{ user_registration.msme_nonmsme }}</td>
+            </tr>
+            <tr>
+                <th>c. Unit / Vendor Bank A/C No</th>
+                <td>{{ user_registration.vendor_bank_account }}</td>
+                <th>d. IFSC</th>
+                <td>{{ user_registration.ifsc }}</td>
+            </tr>
+            <tr>
+                <th>e. GSTIN</th>
+                <td>{{ user_registration.gstin }}</td>
+                <th>f. PAN</th>
+                <td>{{ user_registration.pan }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <p class="section-header">6. PAYING AUTHORITY</p>
+        <table>
+            <tr>
+                <th>PCDA/CDA/AAO</th>
+                <td >{{ user_registration.paying_authority }}</td>
+            </tr>
+        </table>
     </div>
 
     <div class="form-section">
-        <h3>5. PAYMENT TO (BENEFICIARY)</h3>
-        <p><strong>Vendor Name:</strong> {{ user_registration.vendor_name }}</p>
-        <p><strong>MSME/Non-MSME:</strong> {{ user_registration.msme_nonmsme }}</p>
-        <p><strong>Vendor Bank Account:</strong> {{ user_registration.vendor_bank_account }}</p>
-        <p><strong>IFSC:</strong> {{ user_registration.ifsc }}</p>
-        <p><strong>GSTIN:</strong> {{ user_registration.gstin }}</p>
-        <p><strong>PAN:</strong> {{ user_registration.pan }}</p>
+        <p>
+            Certified that the above charges have been necessarily incurred in the interest of the State that the rates charged are the lowest obtainable and that all receipts for sums of Rs……… and under except as regards payments made in the MES to Contractors on running accounts have been so destroyed defaced or mutilated that they cannot be used again and that I have personally checked the progressive total in the bill with that in the contingent registers and found it to agree.
+        </p>
+
+        <table class="table1">
+            <tr>
+              <th>Signature</th>
+              <th>Countersigned</th>
+              <th>Received Payment</th>
+            </tr>
+            <tr>
+              <td>___________________</td>
+              <td>___________________</td>
+              <td>___________________</td>
+            </tr>
+          </table>
     </div>
 
-    <div class="form-section">
-        <h3>6. PAYING AUTHORITY</h3>
-        <p><strong>Paying Authority:</strong> {{ user_registration.paying_authority }}</p>
-    </div>
+</div>
+<script>
+    function downloadAsPDF() {
+        const element = document.querySelector('.container');
+        const options = {
+            margin: [0, 0, 0, 0],  // Set margins to zero for better fit
+            filename: 'Contingent_Bill.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 },  // Increase scale for better quality
+            jsPDF: {
+                unit: 'in',
+                format: 'a3',  // Change format to A3
+                orientation: 'portrait',
+                compress: true  // Compress content to fit the page
+            }
+        };
 
-    <div class="form-section">
-        <h3>Signature and Certification</h3>
-        <p><strong>Signature:</strong> {{ user_registration.signature }}</p>
-        <p><strong>Countersigned:</strong> {{ user_registration.countersigned }}</p>
-        <p><strong>Received Payment:</strong> {{ user_registration.received_payment }}</p>
-    </div>
+        // Ensure that the content is scaled down to fit the page
+        html2pdf().set(options).from(element).save();
+    }
+</script>
+
+<a id="downloadQr" onclick="downloadAsPDF()">
+    <button class="green-button">Download PDF</button>
+</a>
+
+
+<a href="{% url 'register_user' %}">
+    <button class="green-button">Go Back</button>
+</a>
+
+
 </body>
 </html>
