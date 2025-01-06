@@ -1,23 +1,3 @@
-# from django import forms
-# from .models import UserRegistration, Expenditure
-
-# class UserRegistrationForm(forms.ModelForm):
-#     class Meta:
-#         model = UserRegistration
-#         fields = '__all__'
-#         widgets = {
-#             'bill_date': forms.DateInput(attrs={'type': 'date'}),
-#             'supply_order_date': forms.DateInput(attrs={'type': 'date'}),
-#             'sanction_date': forms.DateInput(attrs={'type': 'date'}),
-#             'invoice_date': forms.DateInput(attrs={'type': 'date'}),
-#             'crv_esic_epfo_date': forms.DateInput(attrs={'type': 'date'}),
-#         }
-
-# class ExpenditureForm(forms.ModelForm):
-#     class Meta:
-#         model = Expenditure
-#         fields = ['sl_no', 'item_description', 'qty', 'qty_type', 'tax_type', 'base_amount', 'tax_amount', 'amount']
-
 
 from django import forms
 from .models import UserRegistration, Expenditure

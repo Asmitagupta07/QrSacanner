@@ -60,33 +60,33 @@
 <!--    <h1>Contingent Bill (N)</h1>-->
 <!--    <div class="form-section">-->
 <!--        <h3>1. UNIT DETAILS</h3>-->
-<!--        <p><strong>Unit ID:</strong> {{ user_registration.unit_id }}</p>-->
-<!--        <p><strong>Unit Name:</strong> {{ user_registration.unit_name }}</p>-->
-<!--        <p><strong>Unit Address:</strong> {{ user_registration.unit_address }}</p>-->
-<!--        <p><strong>Dak ID:</strong> {{ user_registration.dak_id }}</p>-->
+<!--        <p><strong>Unit ID:</strong> {{ user_registration.unit_id  | default_if_none:""}}</p>-->
+<!--        <p><strong>Unit Name:</strong> {{ user_registration.unit_name  | default_if_none:""}}</p>-->
+<!--        <p><strong>Unit Address:</strong> {{ user_registration.unit_address  | default_if_none:""}}</p>-->
+<!--        <p><strong>Dak ID:</strong> {{ user_registration.dak_id  | default_if_none:""}}</p>-->
 <!--    </div>-->
 
 <!--    <div class="form-section">-->
 <!--        <h3>2. BUDGET DETAILS</h3>-->
-<!--        <p><strong>Code Head:</strong> {{ user_registration.codehead }}</p>-->
-<!--        <p><strong>IFA/CFA:</strong> {{ user_registration.ifa_cfa }}</p>-->
-<!--        <p><strong>Amount Allotment:</strong> {{ user_registration.amount_allotment }}</p>-->
-<!--        <p><strong>Amount Expended:</strong> {{ user_registration.amount_expended }}</p>-->
-<!--        <p><strong>Balance Allotment:</strong> {{ user_registration.balance_allotment }}</p>-->
+<!--        <p><strong>Code Head:</strong> {{ user_registration.codehead  | default_if_none:""}}</p>-->
+<!--        <p><strong>IFA/CFA:</strong> {{ user_registration.ifa_cfa  | default_if_none:""}}</p>-->
+<!--        <p><strong>Amount Allotment:</strong> {{ user_registration.amount_allotment  | default_if_none:""}}</p>-->
+<!--        <p><strong>Amount Expended:</strong> {{ user_registration.amount_expended  | default_if_none:""}}</p>-->
+<!--        <p><strong>Balance Allotment:</strong> {{ user_registration.balance_allotment  | default_if_none:""}}</p>-->
 <!--    </div>-->
 
 <!--    <div class="form-section">-->
 <!--        <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>-->
-<!--        <p><strong>Expenditure Account:</strong> {{ user_registration.expenditure_account }}</p>-->
-<!--        <p><strong>Incurred By:</strong> {{ user_registration.incurred_by }}</p>-->
-<!--        <p><strong>During Month:</strong> {{ user_registration.during_month }}</p>-->
-<!--        <p><strong>Authority:</strong> {{ user_registration.authority }}</p>-->
-<!--        <p><strong>Sanction No:</strong> {{ user_registration.sanction_no }}</p>-->
-<!--        <p><strong>Sanction Date:</strong> {{ user_registration.sanction_date }}</p>-->
-<!--        <p><strong>Sanction Amount:</strong> {{ user_registration.sanction_amount }}</p>-->
-<!--        <p><strong>Supply Order No:</strong> {{ user_registration.supply_order_no }}</p>-->
-<!--        <p><strong>Supply Order Date:</strong> {{ user_registration.supply_order_date }}</p>-->
-<!--        <p><strong>Supply Order Amount:</strong> {{ user_registration.supply_order_amount }}</p>-->
+<!--        <p><strong>Expenditure Account:</strong> {{ user_registration.expenditure_account  | default_if_none:""}}</p>-->
+<!--        <p><strong>Incurred By:</strong> {{ user_registration.incurred_by  | default_if_none:""}}</p>-->
+<!--        <p><strong>During Month:</strong> {{ user_registration.during_month  | default_if_none:""}}</p>-->
+<!--        <p><strong>Authority:</strong> {{ user_registration.authority  | default_if_none:""}}</p>-->
+<!--        <p><strong>Sanction No:</strong> {{ user_registration.sanction_no  | default_if_none:""}}</p>-->
+<!--        <p><strong>Sanction Date:</strong> {{ user_registration.sanction_date  | default_if_none:""}}</p>-->
+<!--        <p><strong>Sanction Amount:</strong> {{ user_registration.sanction_amount  | default_if_none:""}}</p>-->
+<!--        <p><strong>Supply Order No:</strong> {{ user_registration.supply_order_no  | default_if_none:""}}</p>-->
+<!--        <p><strong>Supply Order Date:</strong> {{ user_registration.supply_order_date  | default_if_none:""}}</p>-->
+<!--        <p><strong>Supply Order Amount:</strong> {{ user_registration.supply_order_amount  | default_if_none:""}}</p>-->
 <!--    </div>-->
 
 <!--    <div class="form-section">-->
@@ -109,14 +109,14 @@
 <!--            <tbody>-->
 <!--                {% for expenditure in user_registration.expenditures.all %}-->
 <!--                    <tr>-->
-<!--                        <td>{{ expenditure.sl_no }}</td>-->
-<!--                        <td>{{ expenditure.item_description }}</td>-->
-<!--                        <td>{{ expenditure.qty }}</td>-->
-<!--                        <td>{{ expenditure.qty_type }}</td>-->
-<!--                        <td>{{ expenditure.tax_type }}</td>-->
-<!--                        <td>{{ expenditure.base_amount }}</td>-->
-<!--                        <td>{{ expenditure.tax_amount }}</td>-->
-<!--                        <td>{{ expenditure.amount }}</td>-->
+<!--                        <td>{{ expenditure.sl_no  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.item_description  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.qty  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.qty_type  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.tax_type  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.base_amount  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.tax_amount  | default_if_none:""}}</td>-->
+<!--                        <td>{{ expenditure.amount  | default_if_none:""}}</td>-->
 <!--                    </tr>-->
 <!--                {% empty %}-->
 <!--                    <tr>-->
@@ -129,24 +129,24 @@
 
 <!--    <div class="form-section">-->
 <!--        <h3>5. PAYMENT TO (BENEFICIARY)</h3>-->
-<!--        <p><strong>Vendor Name:</strong> {{ user_registration.vendor_name }}</p>-->
-<!--        <p><strong>MSME/Non-MSME:</strong> {{ user_registration.msme_nonmsme }}</p>-->
-<!--        <p><strong>Vendor Bank Account:</strong> {{ user_registration.vendor_bank_account }}</p>-->
-<!--        <p><strong>IFSC:</strong> {{ user_registration.ifsc }}</p>-->
-<!--        <p><strong>GSTIN:</strong> {{ user_registration.gstin }}</p>-->
-<!--        <p><strong>PAN:</strong> {{ user_registration.pan }}</p>-->
+<!--        <p><strong>Vendor Name:</strong> {{ user_registration.vendor_name  | default_if_none:""}}</p>-->
+<!--        <p><strong>MSME/Non-MSME:</strong> {{ user_registration.msme_nonmsme  | default_if_none:""}}</p>-->
+<!--        <p><strong>Vendor Bank Account:</strong> {{ user_registration.vendor_bank_account  | default_if_none:""}}</p>-->
+<!--        <p><strong>IFSC:</strong> {{ user_registration.ifsc  | default_if_none:""}}</p>-->
+<!--        <p><strong>GSTIN:</strong> {{ user_registration.gstin  | default_if_none:""}}</p>-->
+<!--        <p><strong>PAN:</strong> {{ user_registration.pan  | default_if_none:""}}</p>-->
 <!--    </div>-->
 
 <!--    <div class="form-section">-->
 <!--        <h3>6. PAYING AUTHORITY</h3>-->
-<!--        <p><strong>Paying Authority:</strong> {{ user_registration.paying_authority }}</p>-->
+<!--        <p><strong>Paying Authority:</strong> {{ user_registration.paying_authority  | default_if_none:""}}</p>-->
 <!--    </div>-->
 
 <!--    <div class="form-section">-->
 <!--        <h3>Signature and Certification</h3>-->
-<!--        <p><strong>Signature:</strong> {{ user_registration.signature }}</p>-->
-<!--        <p><strong>Countersigned:</strong> {{ user_registration.countersigned }}</p>-->
-<!--        <p><strong>Received Payment:</strong> {{ user_registration.received_payment }}</p>-->
+<!--        <p><strong>Signature:</strong> {{ user_registration.signature  | default_if_none:""}}</p>-->
+<!--        <p><strong>Countersigned:</strong> {{ user_registration.countersigned  | default_if_none:""}}</p>-->
+<!--        <p><strong>Received Payment:</strong> {{ user_registration.received_payment  | default_if_none:""}}</p>-->
 <!--    </div>-->
 <!--</div>-->
 <!--</body>-->
@@ -159,6 +159,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
 
     <style>
+        .table_wrapper {
+            position: relative;
+            top: -50px;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
@@ -166,7 +170,7 @@
         .container {
             max-width: 1000px;
             margin: auto;
-            padding: 20px;
+            padding: 0px 20px;
             border: 1px solid #000;
             background-color: #fff;
         }
@@ -209,8 +213,8 @@
             text-align: right;
         }
         .Qr_code img {
-            width: 80px;
-            height: 80px;
+            {% comment %} width: 80px;
+            height: 80px; {% endcomment %}
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -228,6 +232,7 @@
          .contingent-table {
             width: 100%;
             border-collapse: collapse;
+            margin-bottom:0px;
         }
 
         .contingent-table tr,
@@ -257,16 +262,18 @@
         }
 
        .contingent-table #qrCodeImg {
-            width: 200px;
-            height: 193px;
+            width: 250px;
+            height: 250px;
             object-fit: contain;
             margin-left: auto;
         }
 
         .contingent-table .title-cell {
-            width: 87%;
+            width: 100%;
             text-align: center;
             vertical-align: middle;
+            position: relative;
+            left: 85px;
         }
 
         .contingent-table .qr-cell {
@@ -274,65 +281,90 @@
             text-align: right;
         }
 
+        {% comment %} new css {% endcomment %}
+
+        .unit-section {
+            width: 70%;
+            float: left;
+        }
+        .header-section {
+            overflow: hidden;
+        }
+        .qr-cell {
+            float: right;
+            width: 28%;
+            position: relative;
+            top: 1px;
+        }
+        .Qr_code img {
+            width: 275px !important;
+            height: 250px !important;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
-    <table class="contingent-table">
-        <tr>
-            <td class="title-cell">
-                <h1>Contingent Bill (N)</h1>
-            </td>
-            <td class="qr-cell">
-                <div class="Qr_code">
-                    {% if user_profile %}
-                    <img id="qrCodeImg" src="{{ user_profile.qr_code.url }}" alt="QR Code">
-                    {% endif %}
-                </div>
-            </td>
-        </tr>
-    </table>
-
-    <div>
-        <p class="section-header">1. UNIT DETAILS</p>
-        <table class="contingent-table2">
-            <tr>
-                <th>a. Unique Unit ID (14 digits)</th>
-                <td>{{ user_registration.unit_id }}</td>
-                <th>b. Unit Name</th>
-                <td>{{ user_registration.unit_name }}</td>
-            </tr>
-            <tr>
-                <th>c. Unit Address</th>
-                <td>{{ user_registration.unit_address }}</td>
-                <th>d. Dak ID (if Resubmitted Bill)</th>
-                <td >{{ user_registration.dak_id }}</td>
-            </tr>
-            {% comment %} <tr>
-                <th>d. Dak ID (if Resubmitted Bill)</th>
-                <td colspan="3">{{ user_registration.dak_id }}</td>
-            </tr> {% endcomment %}
-        </table>
+<div class="header-wrapper">
+    <div class="title-cell">
+        <h1><center>Contingent Bill (N)</center></h1>
     </div>
+    <div class="header-section">
+        <div class="qr_wrapper qr-cell">
+          {% comment %} <div class="Qr_code">
+                {% if user_profile %}
+                <img id="qrCodeImg" src="{{ user_profile.qr_code.url  | default_if_none:""}}" alt="QR Code">
+                {% endif %}
+            </div>  {% endcomment %}
+            <div class="Qr_code">
+                {% if qr_code %}
+                <img id="qrCodeImg" src="{{ qr_code  | default_if_none:""}}" alt="QR Code">
+                {% endif %}
+            </div>
+        </div>
+        <div class="unit-section">
+            <p class="section-header">1. UNIT DETAILS</p>
+            <table class="contingent-table2">
+                <tr>
+                    <th>a. Unique Unit ID (14 digits)</th>
+                    <td>{{ user_registration.unit_id  | default_if_none:""}}</td>
+                </tr>
+                <tr>
+                    <th>b. Unit Name</th>
+                    <td>{{ user_registration.unit_name  | default_if_none:""}}</td>
+                </tr>
+                <tr>
+                    <th>c. Unit Address</th>
+                    <td>{{ user_registration.unit_address  | default_if_none:""}}</td>
+                </tr>
+                <tr>
+                    <th>d. Dak ID (if Resubmitted Bill)</th>
+                    <td >{{ user_registration.dak_id  | default_if_none:""}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="table_wrapper">
 
     <div>
         <p class="section-header">2. BUDGET DETAILS</p>
         <table>
             <tr>
                 <th>a. Code Head</th>
-                <td>{{ user_registration.codehead }}</td>
+                <td>{{ user_registration.codehead  | default_if_none:""}}</td>
                 <th>b. IFA Con / CFA Inherited</th>
-                <td>{{ user_registration.ifa_cfa }}</td>
+                <td>{{ user_registration.ifa_cfa  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>c. Amount of Allotment</th>
-                <td>{{ user_registration.amount_allotment }}</td>
+                <td>{{ user_registration.amount_allotment  | default_if_none:""}}</td>
                 <th>d. Amount Expended</th>
-                <td>{{ user_registration.amount_expended }}</td>
+                <td>{{ user_registration.amount_expended  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>e. Balance of Allotment</th>
-                <td colspan="3">{{ user_registration.balance_allotment }}</td>
+                <td colspan="3">{{ user_registration.balance_allotment  | default_if_none:""}}</td>
             </tr>
         </table>
     </div>
@@ -342,35 +374,35 @@
         <table>
             <tr>
                 <th>a. Expenditure on Account of</th>
-                <td colspan="3">{{ user_registration.expenditure_account }}</td>
-            </tr>
-            <tr>
+                <td>{{ user_registration.expenditure_account  | default_if_none:""}}</td>
                 <th>b. Incurred By</th>
-                <td>{{ user_registration.incurred_by }}</td>
+                <td>{{ user_registration.incurred_by  | default_if_none:""}}</td>
+            </tr>
+            <tr>
                 <th>c. During Month</th>
-                <td>{{ user_registration.during_month }}</td>
-            </tr>
-            <tr>
+                <td>{{ user_registration.during_month  | default_if_none:""}}</td>
                 <th>d. Authority</th>
-                <td>{{ user_registration.authority }}</td>
+                <td>{{ user_registration.authority  | default_if_none:""}}</td>
+            </tr>
+            <tr>
+                
                 <th>e. Sanction No</th>
-                <td>{{ user_registration.sanction_no }}</td>
-            </tr>
-            <tr>
+                <td>{{ user_registration.sanction_no  | default_if_none:""}}</td>
                 <th>f. Sanction Date</th>
-                <td>{{ user_registration.sanction_date }}</td>
+                <td>{{ user_registration.sanction_date  | default_if_none:""}}</td>
+            </tr>
+            <tr>
+               
                 <th>g. Sanction Amount</th>
-                <td>{{ user_registration.sanction_amount }}</td>
-            </tr>
-            <tr>
+                <td>{{ user_registration.sanction_amount  | default_if_none:""}}</td>
                 <th>h. Supply Order No</th>
-                <td>{{ user_registration.supply_order_no }}</td>
-                <th>i. Supply Order Date</th>
-                <td>{{ user_registration.supply_order_date }}</td>
+                <td>{{ user_registration.supply_order_no  | default_if_none:""}}</td>
             </tr>
             <tr>
+                <th>i. Supply Order Date</th>
+                <td>{{ user_registration.supply_order_date  | default_if_none:""}}</td>
                 <th>j. Supply Order Amount</th>
-                <td colspan="3">{{ user_registration.supply_order_amount }}</td>
+                <td colspan="3">{{ user_registration.supply_order_amount  | default_if_none:""}}</td>
             </tr>
         </table>
     </div>
@@ -393,14 +425,14 @@
             <tbody>
                 {% for expenditure in user_registration.expenditures.all %}
                     <tr>
-                        <td>{{ expenditure.sl_no }}</td>
-                        <td>{{ expenditure.item_description }}</td>
-                        <td>{{ expenditure.qty }}</td>
-                        <td>{{ expenditure.qty_type }}</td>
-                        <td>{{ expenditure.tax_type }}</td>
-                        <td>{{ expenditure.base_amount }}</td>
-                        <td>{{ expenditure.tax_amount }}</td>
-                        <td>{{ expenditure.amount }}</td>
+                        <td>{{ expenditure.sl_no  | default_if_none:""}}</td>
+                        <td>{{ expenditure.item_description  | default_if_none:""}}</td>
+                        <td>{{ expenditure.qty  | default_if_none:""}}</td>
+                        <td>{{ expenditure.qty_type  | default_if_none:""}}</td>
+                        <td>{{ expenditure.tax_type  | default_if_none:""}}</td>
+                        <td>{{ expenditure.base_amount  | default_if_none:""}}</td>
+                        <td>{{ expenditure.tax_amount  | default_if_none:""}}</td>
+                        <td>{{ expenditure.amount  | default_if_none:""}}</td>
                     </tr>
                 {% empty %}
                     <tr>
@@ -412,27 +444,27 @@
         <table>
             <tr>
                 <th>a. Bill No:</th>
-                <td>{{ user_registration.expenditure_account }}</td>
+                <td>{{ user_registration.bill_no  | default_if_none:""}}</td>
                 <th>b. Bill Date:</th>
-                <td>{{ user_registration.incurred_by }}</td>
+                <td>{{ user_registration.bill_date  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>c. Invoice_No:</th>
-                <td>{{ user_registration.during_month }}</td>
+                <td>{{ user_registration.invoice_no  | default_if_none:""}}</td>
                 <th>d. Invoic_Date:</th>
-                <td>{{ user_registration.authority }}</td>
+                <td>{{ user_registration.invoice_date  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>f. Disallowed Amount:</th>
-                <td>{{ user_registration.sanction_date }}</td>
+                <td>{{ user_registration.disallowed_amount  | default_if_none:""}}</td>
                 <th>g. Total Bill Amount:</th>
-                <td>{{ user_registration.sanction_amount }}</td>
+                <td>{{ user_registration.total_bill_amount  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>h. CRV/ESIC/EPFO Challan Date:</th>
-                <td>{{ user_registration.supply_order_no }}</td>
+                <td>{{ user_registration.crv_esic_epfo_no  | default_if_none:""}}</td>
                 <th>i. CRV/ESIC/CRAC Date:</th>
-                <td>{{ user_registration.supply_order_date }}</td>
+                <td>{{ user_registration.crv_esic_epfo_date  | default_if_none:""}}</td>
             </tr>
         </table>
     </div>
@@ -442,21 +474,21 @@
         <table>
             <tr>
                 <th>a. Unit / Vendor Name</th>
-                <td>{{ user_registration.vendor_name }}</td>
+                <td>{{ user_registration.vendor_name  | default_if_none:""}}</td>
                 <th>b. MSME / Non-MSME</th>
-                <td>{{ user_registration.msme_nonmsme }}</td>
+                <td>{{ user_registration.msme_nonmsme  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>c. Unit / Vendor Bank A/C No</th>
-                <td>{{ user_registration.vendor_bank_account }}</td>
+                <td>{{ user_registration.vendor_bank_account  | default_if_none:""}}</td>
                 <th>d. IFSC</th>
-                <td>{{ user_registration.ifsc }}</td>
+                <td>{{ user_registration.ifsc  | default_if_none:""}}</td>
             </tr>
             <tr>
                 <th>e. GSTIN</th>
-                <td>{{ user_registration.gstin }}</td>
+                <td>{{ user_registration.gstin  | default_if_none:""}}</td>
                 <th>f. PAN</th>
-                <td>{{ user_registration.pan }}</td>
+                <td>{{ user_registration.pan  | default_if_none:""}}</td>
             </tr>
         </table>
     </div>
@@ -466,7 +498,7 @@
         <table>
             <tr>
                 <th>PCDA/CDA/AAO</th>
-                <td >{{ user_registration.paying_authority }}</td>
+                <td >{{ user_registration.paying_authority  | default_if_none:""}}</td>
             </tr>
         </table>
     </div>
@@ -489,6 +521,7 @@
             </tr>
           </table>
     </div>
+</div>
 
 </div>
 <script>

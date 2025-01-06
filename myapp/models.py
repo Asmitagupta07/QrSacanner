@@ -1,8 +1,10 @@
 from django.db import models
 from django.core.validators import MinLengthValidator
 
+from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator, MaxValueValidator
+
 class UserRegistration(models.Model):
-    # unit_id = models.CharField(max_length=14, min_length=14)
     unit_id = models.CharField(max_length=14,validators=[MinLengthValidator(14)],help_text="Unit ID must be exactly 14 characters long.")
     unit_name = models.CharField(max_length=100)
     unit_address = models.TextField()
@@ -16,7 +18,10 @@ class UserRegistration(models.Model):
     
     expenditure_account = models.CharField(max_length=100, blank=True, null=True)
     incurred_by = models.CharField(max_length=100)
-    during_month = models.CharField(max_length=100)
+    during_month = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(12)],
+        help_text="Enter a valid month (1-12)."
+    )
     authority = models.CharField(max_length=100, blank=True, null=True)
     sanction_no = models.CharField(max_length=100)
     sanction_date = models.DateField()
@@ -42,14 +47,20 @@ class UserRegistration(models.Model):
     pan = models.CharField(max_length=10, blank=True, null=True)
     
     paying_authority = models.CharField(max_length=100)
-    
-    # signature = models.CharField(max_length=100, blank=True, null=True)
-    # countersigned = models.CharField(max_length=100, blank=True, null=True)
-    # received_payment = models.CharField(max_length=100, blank=True, null=True)
+
 
     def __str__(self):
         return self.unit_name
 
+
+
+# class UserProfile(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)
+ 
 class Expenditure(models.Model):
     user_registration = models.ForeignKey('UserRegistration', related_name='expenditures', on_delete=models.CASCADE)
     sl_no = models.IntegerField()
@@ -65,9 +76,3 @@ class Expenditure(models.Model):
         return f"Expenditure {self.sl_no} for {self.user_registration.unit_name}"
 
 
-from django.db import models
-from django.contrib.auth.models import User
-
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)

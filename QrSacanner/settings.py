@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'QrSacanner.wsgi.application'
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'qrScanner',
+		'NAME': 'qrScanner1',
 		# 'USER': 'user1',
         'USER' : 'root',
 		'PASSWORD': '123456',

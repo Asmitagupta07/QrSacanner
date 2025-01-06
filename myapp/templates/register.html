@@ -99,16 +99,43 @@
             object-fit: contain;
             margin-left: auto;
         }
+        textarea#id_unit_address {
+            height: 100px;
+        }
     </style>
 </head>
 <body>
   <div class="container">
     <form method="post">
         <h1>Contingent Bill (N)</h1>
+        {% if error_message %}
+        <div class="error-message" style="color: red; font-weight: bold;">
+            <p>{{ error_message }}</p>
+        </div>
+        {% endif %}
+
+        {% if form.errors %}
+        <div class="field-errors" style="color: red;">
+            {% for field in form %}
+                {% if field.errors %}
+                    <div>
+                        <strong>{{ field.label }}:</strong>
+                        <ul>
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
         {% csrf_token %}
 
         <!-- Unit Details Section -->
         <div class="form-section">
+       
             <h3>1. UNIT DETAILS</h3>
             <table class="form-table">
                 <tr>
@@ -288,6 +315,7 @@
 
 
         <button type="submit" class="green-button">Submit</button>
+
     </form>
   </div>
 
