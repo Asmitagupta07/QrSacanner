@@ -52,11 +52,6 @@ class UserRegistration(models.Model):
     def __str__(self):
         return self.unit_name
 
-
-
-# class UserProfile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     qr_code = models.ImageField(upload_to='qr_codes/', blank=True, null=True)
