@@ -214,10 +214,11 @@
                         <td>{{ user_registration.amount_allotment  | default_if_none:""}}</td>
                         <th>d. Amount Expended</th>
                         <td>{{ user_registration.amount_expended  | default_if_none:""}}</td>
+                    </tr>
+                    <tr>
                         <th>e. Balance of Allotment</th>
                         <td colspan="3">{{ user_registration.balance_allotment  | default_if_none:""}}</td>
                     </tr>
-
                 </table>
             </div>
     
@@ -341,6 +342,11 @@
                         <td>{{ user_registration.gstin  | default_if_none:""}}</td>
                         <th>f. PAN</th>
                         <td>{{ user_registration.pan  | default_if_none:""}}</td>
+                        
+                    </tr>
+                    <tr>
+                        <th>g. Make </th>
+                        <td colspan="3">{{ user_registration.Make  | default_if_none:""}}</td>
                     </tr>
                 </table>
             </div>

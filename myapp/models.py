@@ -45,7 +45,20 @@ class UserRegistration(models.Model):
     ifsc = models.CharField(max_length=11)
     gstin = models.CharField(max_length=15, blank=True, null=True)
     pan = models.CharField(max_length=10, blank=True, null=True)
-    
+    Make = models.CharField(
+    max_length=30, 
+    choices=[
+        ('DPSU', 'make in india(dpsu)'),
+        ('PSU', 'make in india(psu)'),
+        ('STARTUP', 'make in india(startup)'),
+        ('RAKSHA RATNAM', 'make in india(raksha ratnam)'),
+        ('PRIVATE', 'make in india(private)'),
+        ('DBT', 'make in india(dbt)'),
+        ('LC', 'foreign procurement(lc)')
+    ],
+    blank=True, 
+    null=True
+    )    
     paying_authority = models.CharField(max_length=100)
 
 
