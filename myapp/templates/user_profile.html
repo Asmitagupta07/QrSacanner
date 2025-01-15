@@ -205,19 +205,17 @@
                 <table>
                     <tr>
                         <th>a. Code Head</th>
-                        <td>{{ user_registration.codehead  | default_if_none:""}}</td>
+                        <td>{{ user_registration.codehead | default_if_none:"" }}</td>
                         <th>b. IFA Con / CFA Inherited</th>
-                        <td>{{ user_registration.ifa_cfa  | default_if_none:""}}</td>
-                    </tr>
-                    <tr>
+                        <td>{{ user_registration.ifa_cfa | default_if_none:"" }}</td>
                         <th>c. Amount of Allotment</th>
-                        <td>{{ user_registration.amount_allotment  | default_if_none:""}}</td>
-                        <th>d. Amount Expended</th>
-                        <td>{{ user_registration.amount_expended  | default_if_none:""}}</td>
+                        <td>{{ user_registration.amount_allotment | default_if_none:"" }}</td>
                     </tr>
                     <tr>
+                        <th>d. Amount Expended</th>
+                        <td>{{ user_registration.amount_expended | default_if_none:"" }}</td>
                         <th>e. Balance of Allotment</th>
-                        <td colspan="3">{{ user_registration.balance_allotment  | default_if_none:""}}</td>
+                        <td colspan="3">{{ user_registration.balance_allotment | default_if_none:"" }}</td>
                     </tr>
                 </table>
             </div>
@@ -289,7 +287,7 @@
                             </tr>
                         {% empty %}
                             <tr>
-                                <td colspan="8">No expenditure details available.</td>
+                                <td colspan="3">No expenditure details available.</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -327,26 +325,26 @@
                 <table>
                     <tr>
                         <th>a. Unit / Vendor Name</th>
-                        <td>{{ user_registration.vendor_name  | default_if_none:""}}</td>
-                        <th>b. MSME / Non-MSME</th>
-                        <td>{{ user_registration.msme_nonmsme  | default_if_none:""}}</td>
-                    </tr>
-                    <tr>
-                        <th>c. Unit / Vendor Bank A/C No</th>
-                        <td>{{ user_registration.vendor_bank_account  | default_if_none:""}}</td>
-                        <th>d. IFSC</th>
-                        <td>{{ user_registration.ifsc  | default_if_none:""}}</td>
-                    </tr>
-                    <tr>
-                        <th>e. GSTIN</th>
-                        <td>{{ user_registration.gstin  | default_if_none:""}}</td>
-                        <th>f. PAN</th>
-                        <td>{{ user_registration.pan  | default_if_none:""}}</td>
+                        <td colspan="5">{{ user_registration.vendor_name | default_if_none:"" }}</td>
                         
                     </tr>
                     <tr>
-                        <th>g. Make </th>
-                        <td colspan="3">{{ user_registration.Make  | default_if_none:""}}</td>
+                        <th>b. Unit / Vendor Bank A/C No</th>
+                        <td>{{ user_registration.vendor_bank_account | default_if_none:"" }}</td>
+                        <th>c. IFSC</th>
+                        <td>{{ user_registration.ifsc | default_if_none:"" }}</td>
+                        <th>d. GSTIN</th>
+                        <td>{{ user_registration.gstin | default_if_none:"" }}</td>
+                    </tr>
+                    <tr>
+                        <th>e. PAN</th>
+                        <td>{{ user_registration.pan | default_if_none:"" }}</td>
+                        <th>f. MSME / Non-MSME</th>
+                        <td>{{ user_registration.msme_nonmsme | default_if_none:"" }}</td>
+                        <th>g. Make</th>
+                        <td >{{ user_registration.Make | default_if_none:"" }}</td>
+                    
+
                     </tr>
                 </table>
             </div>

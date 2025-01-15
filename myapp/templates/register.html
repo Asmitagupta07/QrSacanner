@@ -79,13 +79,14 @@
         .blue-button {
             background-color: blue;
             color: white;
-            display: block;
             margin: 10px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+            /* padding: 10px 20px; */
+            /* border: none; */
+            /* border: none; */
+            /* display: block; */
             cursor: pointer;
             text-align: center;
+            width: 83px;
         }
         .border-button {orm-section
             border: 2px solid green;
@@ -102,6 +103,19 @@
         textarea#id_unit_address {
             height: 100px;
         }
+        th, td {
+            {% comment %} border: 1px solid #000; {% endcomment %}
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button.grey {
+            background-color: crimson;
+            color: white;
+            width: 86px;
+        }
     </style>
 </head>
 <body>
@@ -113,23 +127,23 @@
             <p>{{ error_message }}</p>
         </div>
         {% endif %}
-
+        
         {% if form.errors %}
-        <div class="field-errors" style="color: red;">
-            {% for field in form %}
-                {% if field.errors %}
-                    <div>
-                        <strong>{{ field.label }}:</strong>
-                        <ul>
-                            {% for error in field.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endif %}
+            <div class="field-errors" style="color: red;">
+                {% for field in form %}
+                    {% if field.errors %}
+                        <div>
+                            <strong>{{ field.label }}:</strong>
+                            <ul>
+                                {% for error in field.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
 
         {% csrf_token %}
 
@@ -139,15 +153,15 @@
             <h3>1. UNIT DETAILS</h3>
             <table class="form-table">
                 <tr>
-                    <td>{{ form.unit_id.label_tag }}</td>
+                    <th>{{ form.unit_id.label_tag }}</th>
                     <td>{{ form.unit_id }}</td>
-                    <td>{{ form.unit_name.label_tag }}</td>
+                    <th>{{ form.unit_name.label_tag }}</th>
                     <td>{{ form.unit_name }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.unit_address.label_tag }}</td>
+                    <th>{{ form.unit_address.label_tag }}</th>
                     <td>{{ form.unit_address }}</td>
-                    <td>{{ form.dak_id.label_tag }}</td>
+                    <th>{{ form.dak_id.label_tag }}</th>
                     <td>{{ form.dak_id }}</td>
                 </tr>
             </table>
@@ -158,19 +172,19 @@
             <h3>2. BUDGET DETAILS</h3>
             <table class="form-table">
                 <tr>
-                    <td>{{ form.codehead.label_tag }}</td>
+                    <th>{{ form.codehead.label_tag }}</th>
                     <td>{{ form.codehead }}</td>
-                    <td>{{ form.ifa_cfa.label_tag }}</td>
+                    <th>{{ form.ifa_cfa.label_tag }}</th>
                     <td>{{ form.ifa_cfa }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.amount_allotment.label_tag }}</td>
+                    <th>{{ form.amount_allotment.label_tag }}</th>
                     <td>{{ form.amount_allotment }}</td>
-                    <td>{{ form.amount_expended.label_tag }}</td>
+                    <th>{{ form.amount_expended.label_tag }}</th>
                     <td>{{ form.amount_expended }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.balance_allotment.label_tag }}</td>
+                    <th>{{ form.balance_allotment.label_tag }}</th>
                     <td>{{ form.balance_allotment }}</td>
                 </tr>
             </table>
@@ -181,33 +195,33 @@
             <h3>3. SANCTION / SUPPLY ORDER DETAILS</h3>
             <table class="form-table">
                 <tr>
-                    <td>{{ form.expenditure_account.label_tag }}</td>
+                    <th>{{ form.expenditure_account.label_tag }}</th>
                     <td>{{ form.expenditure_account }}</td>
-                    <td>{{ form.incurred_by.label_tag }}</td>
+                    <th>{{ form.incurred_by.label_tag }}</th>
                     <td>{{ form.incurred_by }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.during_month.label_tag }}</td>
+                    <th>{{ form.during_month.label_tag }}</th>
                     <td>{{ form.during_month }}</td>
-                    <td>{{ form.authority.label_tag }}</td>
+                    <th>{{ form.authority.label_tag }}</th>
                     <td>{{ form.authority }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.sanction_no.label_tag }}</td>
+                    <th>{{ form.sanction_no.label_tag }}</th>
                     <td>{{ form.sanction_no }}</td>
-                    <td>{{ form.sanction_date.label_tag }}</td>
+                    <th>{{ form.sanction_date.label_tag }}</th>
                     <td>{{ form.sanction_date }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.supply_order_no.label_tag }}</td>
+                    <th>{{ form.supply_order_no.label_tag }}</th>
                     <td>{{ form.supply_order_no }}</td>
-                    <td>{{ form.supply_order_date.label_tag }}</td>
+                    <th>{{ form.supply_order_date.label_tag }}</th>
                     <td>{{ form.supply_order_date }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.sanction_amount.label_tag }}</td>
+                    <th>{{ form.sanction_amount.label_tag }}</th>
                     <td>{{ form.sanction_amount }}</td>
-                    <td>{{ form.supply_order_amount.label_tag }}</td>
+                    <th>{{ form.supply_order_amount.label_tag }}</th>
                     <td>{{ form.supply_order_amount }}</td>
                 </tr>
             </table>
@@ -230,33 +244,46 @@
                     </tr>
                 </thead>
                 <tbody id="expenditure-rows">
-                    <!-- Populate initial rows here if needed -->
+                    {% for row in form.expenditure %}
+                        <tr>
+                            <td><input type="number" name="sl_no" value="{{ row.sl_no }}" readonly></td>
+                            <td><input type="text" name="item_description" value="{{ row.item_description }}"></td>
+                            <td><input type="number" name="qty" value="{{ row.qty }}"></td>
+                            <td><input type="text" name="qty_type" value="{{ row.qty_type }}"></td>
+                            <td><input type="text" name="tax_type" value="{{ row.tax_type }}"></td>
+                            <td><input type="number" name="base_amount" value="{{ row.base_amount }}"></td>
+                            <td><input type="number" name="tax_amount" value="{{ row.tax_amount }}"></td>
+                            <td><input type="number" name="amount" value="{{ row.amount }}"></td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
+
             <button type="button" class="blue-button" onclick="addExpenditureRow()">Add Row</button>
+            <button type="button" class="grey" onclick="deleteExpenditureRow()">Delete Row</button>
             <table class="form-table">
                 <tr>
-                    <td>{{ form.bill_no.label_tag }}</td>
+                    <th>{{ form.bill_no.label_tag }}</th>
                     <td>{{ form.bill_no }}</td>
-                    <td>{{ form.bill_date.label_tag }}</td>
+                    <th>{{ form.bill_date.label_tag }}</th>
                     <td>{{ form.bill_date }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.invoice_no.label_tag }}</td>
+                    <th>{{ form.invoice_no.label_tag }}</th>
                     <td>{{ form.invoice_no }}</td>
-                    <td>{{ form.invoice_date.label_tag }}</td>
+                    <th>{{ form.invoice_date.label_tag }}</th>
                     <td>{{ form.invoice_date }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.disallowed_amount.label_tag }}</td>
+                    <th>{{ form.disallowed_amount.label_tag }}</th>
                     <td>{{ form.disallowed_amount }}</td>
-                    <td>{{ form.total_bill_amount.label_tag }}</td>
+                    <th>{{ form.total_bill_amount.label_tag }}</th>
                     <td>{{ form.total_bill_amount}}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.crv_esic_epfo_no.label_tag  }}</td>
+                    <th>{{ form.crv_esic_epfo_no.label_tag  }}</th>
                     <td>{{ form.crv_esic_epfo_no }}</td>
-                    <td>{{ form.crv_esic_epfo_date.label_tag }}</td>
+                    <th>{{ form.crv_esic_epfo_date.label_tag }}</th>
                     <td>{{ form.crv_esic_epfo_date }}</td>
                 </tr>
             </table>
@@ -265,34 +292,40 @@
         <!-- Payment to Beneficiary Section -->
         <div class="form-section">
             <h3>5. PAYMENT TO (BENEFICIARY)</h3>
-            <table class="form-table">
+            <table class="form-table payment-table">
                 <tr>
-                    <td>{{ form.vendor_name.label_tag }}</td>
-                    <td>{{ form.vendor_name }}</td>
-                    <td>{{ form.msme_nonmsme.label_tag }}</td>
-                    <td>{{ form.msme_nonmsme }}</td>
+                    <th>{{ form.vendor_name.label_tag }}</th>
+                    <td colspan="3">{{ form.vendor_name }}</td>
+                    
                 </tr>
                 <tr>
-                    <td>{{ form.vendor_bank_account.label_tag }}</td>
+                    <th>{{ form.msme_nonmsme.label_tag }}</th>
+                    <td>{{ form.msme_nonmsme }}</td>
+                    <th>{{ form.Make.label_tag }}</th>
+                    <td>{{ form.Make }}</td>
+                </tr>
+                <tr>
+                    <th>{{ form.vendor_bank_account.label_tag }}</th>
                     <td>{{ form.vendor_bank_account }}</td>
-                    <td>{{ form.ifsc.label_tag }}</td>
+                    <th>{{ form.ifsc.label_tag }}</th>
                     <td>{{ form.ifsc }}</td>
                 </tr>
                 <tr>
-                    <td>{{ form.gstin.label_tag }}</td>
+                    <th>{{ form.gstin.label_tag }}</th>
                     <td>{{ form.gstin }}</td>
-                    <td>{{ form.pan.label_tag }}</td>
+                    <th>{{ form.pan.label_tag }}</th>
                     <td>{{ form.pan }}</td>
-                    <td>{{ form.Make.label_tag }}</td>
-                    <td>{{ form.Make }}</td>
+                   
                 </tr>
+              
             </table>
         </div>
+        
 
         <!-- PAYING AUTHORITY -->
         <div class="form-section">
             <h3>6. PAYING AUTHORITY</h3>
-            <td>{{ form.paying_authority.label_tag}}</td>
+            <th>{{ form.paying_authority.label_tag}}</th>
             <td>{{ form.paying_authority }}</td>
         </div>
 
@@ -308,9 +341,9 @@
                   <th>Received Payment</th>    
                 </tr>
                 <tr>
-                  <td>__________________________</td>
-                  <td>__________________________</td>    
-                  <td>__________________________</td>  
+                  <th>__________________________</th>
+                  <th>__________________________</th>    
+                  <th>__________________________</th>  
                 </tr>
               </table>
         </div>
@@ -322,12 +355,12 @@
   </div>
 
   <script>
-      function addExpenditureRow() {
-          const table = document.getElementById('expenditure-rows');
-          const row = document.createElement('tr');
-
-          row.innerHTML = `
-            <td><input type="number" name="sl_no"></td>
+    function addExpenditureRow() {
+        const table = document.getElementById('expenditure-rows');
+        const row = document.createElement('tr');
+        const nextSlNo = table.rows.length + 1;
+        row.innerHTML = `
+            <td><input type="number" name="sl_no" value="${nextSlNo}" readonly></td>
             <td><input type="text" name="item_description"></td>
             <td><input type="number" name="qty"></td>
             <td><input type="text" name="qty_type"></td>
@@ -336,9 +369,18 @@
             <td><input type="number" name="tax_amount"></td>
             <td><input type="number" name="amount"></td>
         `;
-
-          table.appendChild(row);
-      }
+        table.appendChild(row);
+    }
+    
+    function deleteExpenditureRow() {
+        const tableBody = document.getElementById('expenditure-rows');
+        if (tableBody.rows.length > 0) {
+            tableBody.deleteRow(tableBody.rows.length - 1); // Delete the last row
+        } else {
+            alert('No rows to delete!');
+        }
+    }
+    
   </script>
 </body>
 </html>

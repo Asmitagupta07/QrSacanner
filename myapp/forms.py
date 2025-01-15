@@ -40,6 +40,7 @@ class UserRegistrationForm(forms.ModelForm):
             'ifsc': 'd. IFSC',
             'gstin': 'e. GSTIN',
             'pan': 'f. PAN',
+            'Make': 'g .MAKE',
             'paying_authority': 'PCDA / CDA / AAO',
         }
         widgets = {

@@ -12,6 +12,7 @@ from .models import UserRegistration
 from django.views.decorators.csrf import csrf_exempt
 import decimal
 from django.core.exceptions import ValidationError
+from django.http import HttpResponse
 
 
 def convert_decimal_to_string(data):
@@ -30,9 +31,6 @@ def register_user(request):
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
             try:
-                 
-                if form.cleaned_data.get('during_month') not in range(1, 13):
-                    form.add_error('during_month', 'Please enter a valid month (1-12).')
                
                 user_registration = form.save()
                 
@@ -51,7 +49,7 @@ def register_user(request):
                 for i in range(len(sl_no_list)):
                     expenditure = Expenditure.objects.create(
                         user_registration=user_registration,
-                        sl_no=sl_no_list[i],
+                        sl_no=sl_no_list[i] if sl_no_list else i + 1,
                         item_description=item_desc_list[i],
                         qty=qty_list[i],
                         qty_type=qty_type_list[i],
